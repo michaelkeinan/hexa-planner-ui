@@ -5,7 +5,7 @@
       :datasetsList="materialsDatasetsList"
       class="line-chart-container"
     />
-    <GanttChart />
+    <GanttChart class="gantt-container" />
   </div>
 </template>
 
@@ -59,5 +59,9 @@ export default {
 .line-chart-container {
   background-color: beige;
   border-radius: var(--border-radius-small);
+}
+.gantt-container {
+  width: 100%;
+  height: 40vh;
 }
 </style>

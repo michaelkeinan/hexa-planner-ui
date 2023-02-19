@@ -67,7 +67,7 @@ export default {
     },
     height: {
       type: Number,
-      default: 600,
+      default: 500,
     },
     cssClasses: {
       default: "",

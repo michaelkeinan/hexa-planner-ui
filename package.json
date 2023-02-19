@@ -10,15 +10,15 @@
   "dependencies": {
     "chart.js": "^3.9.1",
     "chartjs-plugin-zoom": "^2.0.0",
-    "frappe-gantt": "^0.6.1",
+    "moment": "^2.29.4",
     "vue": "^2.7.7",
     "vue-chartjs": "^4.1.2",
+    "vue-ganttastic": "^0.9.34",
     "vue-router": "^3.5.4",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
-    "@types/frappe-gantt": "^0.6.1",
     "@vitejs/plugin-legacy": "^2.0.0",
     "@vitejs/plugin-vue2": "^1.1.2",
     "@vue/eslint-config-prettier": "^7.0.0",

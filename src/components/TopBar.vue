@@ -4,9 +4,7 @@
       <img src="../assets/hexagonal-diaphram.svg" alt="logo" />
     </div>
     <div class="tiny-vertical-spacer" />
-    <div class="app-header-title">
-      HEXA Planner UI
-    </div>
+    <div class="app-header-title">HEXA Planner Platform</div>
   </header>
 </template>
 
