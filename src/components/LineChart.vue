@@ -26,6 +26,8 @@ import {
   PointElement,
 } from "chart.js";
 
+import zoomPlugin from "chartjs-plugin-zoom";
+
 ChartJS.register(
   Title,
   Tooltip,
@@ -33,7 +35,8 @@ ChartJS.register(
   LineElement,
   LinearScale,
   CategoryScale,
-  PointElement
+  PointElement,
+  zoomPlugin
 );
 
 export default {
@@ -88,6 +91,19 @@ export default {
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
+        plugins: {
+          zoom: {
+            zoom: {
+              wheel: {
+                enabled: true,
+              },
+              pinch: {
+                enabled: true,
+              },
+              mode: "xy",
+            },
+          },
+        },
       },
     };
   },
