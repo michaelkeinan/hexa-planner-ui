@@ -1,0 +1,40 @@
+:root {
+  /* colors */
+    --color-white: #ffffff;
+    --color-gray: #d8d8d8;
+    --color-gray-40: rgba(216, 216, 216, 0.4);
+    --background-color: #e4e3e3;
+    --color-black-text: #14151a;
+  /* border-radius */
+    --border-radius-small: 0.25em;
+    --border-radius-big: 0.75em;
+  }
+
+html {
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;;
+  letter-spacing: normal;
+  color: var(--color-black-text);
+  background-color: var(--background-color);
+  font-size: 2rem;
+  background-image: url(../assets/background3.png);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
