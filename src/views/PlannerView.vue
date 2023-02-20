@@ -69,11 +69,13 @@ export default {
 .line-chart-container {
   background-color: var(--color-cream);
   border-radius: var(--border-radius-small);
+  box-shadow: var(--box-shadow);
 }
 .gantt-container {
   margin-top: 2em;
   width: 100%;
   border-radius: var(--border-radius-small);
   overflow: auto;
+  box-shadow: var(--box-shadow);
 }
 </style>
