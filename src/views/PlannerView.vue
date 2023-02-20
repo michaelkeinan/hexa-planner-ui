@@ -34,6 +34,7 @@ export default {
       samplesTimestampsList: (state) => state.inventory.samplesTimestampsList,
       materialValuesByName: (state) => state.inventory.materialValuesByName,
       machineToRecipesMap: (state) => state.gantt.machineToRecipesMap,
+      recipesTimeAndDatePeriod: (state) => state.gantt.recipesTimeAndDatePeriod,
     }),
     materialsDatasetsList() {
       const materialsDatasets = Object.keys(this.materialValuesByName).map(
@@ -48,14 +49,22 @@ export default {
     },
     ganttChartDataset() {
       const ganttDataset = {
+        myChartStart: this.recipesTimeAndDatePeriod.startTimeAndDate,
+        myChartEnd: this.recipesTimeAndDatePeriod.endTimeAndDate,
         rows: [],
       };
       for (const machine in this.machineToRecipesMap) {
         const machineToAdd = {
           label: machine,
-          bars: this.machineToRecipesMap[machine].map((recipe) => ({
-            myStart: recipe.start,
-            myEnd: recipe.end,
+          bars: this.machineToRecipesMap[machine].map((currentRecipe) => ({
+            myStart: currentRecipe.start.replace("T", " "),
+            myEnd: currentRecipe.end.replace("T", " "),
+            label: currentRecipe.recipe,
+            ganttBarConfig: {
+              color: "white",
+              backgroundColor: "#d18aaf",
+              opacity: 0.7,
+            },
           })),
         };
         ganttDataset.rows = [...ganttDataset.rows, machineToAdd];
@@ -75,12 +84,13 @@ export default {
   padding: 1.5em;
 }
 .line-chart-container {
-  background-color: beige;
+  background-color: var(--color-cream);
   border-radius: var(--border-radius-small);
 }
 .gantt-container {
   margin-top: 2em;
   width: 100%;
   border-radius: var(--border-radius-small);
+  overflow: auto;
 }
 </style>

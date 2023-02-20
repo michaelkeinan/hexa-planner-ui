@@ -1,10 +1,6 @@
 :root {
   /* colors */
-    --color-white: #ffffff;
-    --color-gray: #d8d8d8;
-    --color-gray-40: rgba(216, 216, 216, 0.4);
-    --background-color: #e4e3e3;
-    --color-black-text: #14151a;
+    --color-cream: rgb(255, 246, 240);
   /* border-radius */
     --border-radius-small: 0.25em;
     --border-radius-big: 0.75em;
