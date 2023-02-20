@@ -19,9 +19,7 @@ export default {
 };
 </script>
 <style scoped>
-.loader-text {
-  color: var(--color-gray-text);
-}
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -48,6 +46,10 @@ export default {
   transition: all 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
   border: 3px solid #768f9d;
+}
+.loader-text {
+  color: var(--color-gray-text);
+  text-align: center;
 }
 .cssload-wrap {
   display: flex;
