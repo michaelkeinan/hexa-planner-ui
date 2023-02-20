@@ -5,7 +5,7 @@
       :datasetsList="materialsDatasetsList"
       class="line-chart-container"
     />
-    <GanttChart class="gantt-container" />
+    <GanttChart :ganttDataset="ganttChartDataset" class="gantt-container" />
   </div>
 </template>
 
@@ -26,15 +26,17 @@ export default {
 
   created() {
     this.fetchAndParseInventoryData();
+    this.fetchAndParseGanttData();
   },
 
   computed: {
     ...mapState({
       samplesTimestampsList: (state) => state.inventory.samplesTimestampsList,
       materialValuesByName: (state) => state.inventory.materialValuesByName,
+      machineToRecipesMap: (state) => state.gantt.machineToRecipesMap,
     }),
     materialsDatasetsList() {
-      const materialsList = Object.keys(this.materialValuesByName).map(
+      const materialsDatasets = Object.keys(this.materialValuesByName).map(
         (materialName, index) => ({
           label: materialName,
           borderColor: COLORS_LIST[index],
@@ -42,26 +44,43 @@ export default {
           data: this.materialValuesByName[materialName],
         })
       );
-      return materialsList;
+      return materialsDatasets;
+    },
+    ganttChartDataset() {
+      const ganttDataset = {
+        rows: [],
+      };
+      for (const machine in this.machineToRecipesMap) {
+        const machineToAdd = {
+          label: machine,
+          bars: this.machineToRecipesMap[machine].map((recipe) => ({
+            myStart: recipe.start,
+            myEnd: recipe.end,
+          })),
+        };
+        ganttDataset.rows = [...ganttDataset.rows, machineToAdd];
+      }
+      return ganttDataset;
     },
   },
 
   methods: {
-    ...mapActions(["fetchAndParseInventoryData"]),
+    ...mapActions(["fetchAndParseInventoryData", "fetchAndParseGanttData"]),
   },
 };
 </script>
 
 <style>
 .planner-view-container {
-  padding: 1em;
+  padding: 1.5em;
 }
 .line-chart-container {
   background-color: beige;
   border-radius: var(--border-radius-small);
 }
 .gantt-container {
+  margin-top: 2em;
   width: 100%;
-  height: 40vh;
+  border-radius: var(--border-radius-small);
 }
 </style>

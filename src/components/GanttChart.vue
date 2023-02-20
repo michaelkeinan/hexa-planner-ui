@@ -1,8 +1,5 @@
 <template>
-  <g-gantt-chart
-    :chart-start="myChartStart"
-    :chart-end="myChartEnd"
-  >
+  <g-gantt-chart :chart-start="myChartStart" :chart-end="myChartEnd">
     <g-gantt-row
       v-for="row in rows"
       :key="row.label"
@@ -15,44 +12,39 @@
 </template>
 
 <script>
-import {GGanttChart, GGanttRow} from 'vue-ganttastic'
+import { GGanttChart, GGanttRow } from "vue-ganttastic";
 
 export default {
   name: "GanttChart",
-  components:{
-    GGanttChart,
-    GGanttRow
+  
+  props: {
+    ganttDataset: {
+      type: Object,
+      default: () => {},
+    },
   },
 
-  data(){
-    return {
-      myChartStart: "2020-03-01 00:00",
-      myChartEnd: "2020-03-03 00:00",
-      rows: [
-        {
-          label: "My row #1",
-          bars: [
-            {
-              myStart: "2020-03-01 12:10",
-              myEnd: "2020-03-01 16:35"
-            }
-          ]
-        },
-        {
-          label: "My row #2",
-          bars: [
-            {
-              myStart: "2020-03-02 01:00",
-              myEnd: "2020-03-02 12:00"
-            },
-            {
-              myStart: "2020-03-02 13:00",
-              myEnd: "2020-03-02 22:00"
-            }
-          ]
-        }
-      ]
-    }
-  }
-}
+  components: {
+    GGanttChart,
+    GGanttRow,
+  },
+
+  data() {
+    return this.ganttDataset
+      // myChartStart: "2020-03-01 00:00",
+      // myChartEnd: "2020-03-03 00:00"
+  },
+};
 </script>
+
+<style>
+#g-gantt-chart {
+  background-color: beige !important;
+}
+#g-timeaxis {
+  background-color: beige !important;
+}
+.g-gantt-row-label {
+  background-color: beige !important;
+}
+</style>
