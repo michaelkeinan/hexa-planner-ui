@@ -35,7 +35,7 @@ export default {
 }
 .tiny-vertical-spacer {
   width: 0.05%;
-  background-color: var(--color-gray);
+  background-color: var(--color-gray-text);
 }
 .app-header-title {
   display: flex;
@@ -48,6 +48,6 @@ export default {
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  color: #f4f4f4b2;
+  color: var(--color-gray-text);
 }
 </style>

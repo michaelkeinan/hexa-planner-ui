@@ -1,5 +1,6 @@
 <template>
   <div class="planner-view-container">
+    <HexagonLoader v-if="isShowLoader" isShowLoader />
     <LineChart
       :labels="samplesTimestampsList"
       :datasetsList="materialsDatasetsList"
@@ -15,6 +16,7 @@ import LineChart from "../components/LineChart.vue";
 import GanttChart from "../components/GanttChart/GanttChart.vue";
 import { COLORS_LIST } from "../common/helper.js";
 import { generateChartDataset } from "../components/GanttChart/helper";
+import HexagonLoader from "../components/HexagonLoader.vue";
 
 export default {
   name: "PlannerView",
@@ -22,11 +24,21 @@ export default {
   components: {
     LineChart,
     GanttChart,
+    HexagonLoader,
   },
 
   created() {
     this.fetchAndParseInventoryData();
     this.fetchAndParseGanttData();
+    setTimeout(() => {
+      this.isShowLoader = false;
+    }, 4000);
+  },
+
+  data() {
+    return {
+      isShowLoader: true,
+    };
   },
 
   computed: {

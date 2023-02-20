@@ -1,6 +1,7 @@
 :root {
   /* colors */
     --color-cream: rgb(255, 246, 240);
+    --color-gray-text: #f4f4f4b2;
   /* border-radius */
     --border-radius-small: 0.25em;
     --border-radius-big: 0.75em;
