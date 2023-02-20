@@ -51,12 +51,7 @@ export default {
       rowHeight: 40,
       rowLabelWidth: 15,
       hideTimeaxis: false,
-      hours: [...Array(24).keys()],
       highlightedHours: [10, 12],
-      showContextmenu: true,
-      contextmenuTimeout: null,
-      contextmenuX: 0,
-      contextmenuY: 0,
       selectedTheme: "creamy",
       themes: [
         "default",

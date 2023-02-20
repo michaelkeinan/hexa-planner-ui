@@ -1,4 +1,5 @@
 export const COLORS_LIST = [
+  "#d18aaf",
   "maroon",
   "red",
   "purple",

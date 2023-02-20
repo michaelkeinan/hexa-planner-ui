@@ -12,10 +12,10 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import LineChart from "../components/LineChart.vue";
-import GanttChart from "../components/GanttChart.vue";
-import {} from "../common/helper.js";
-
+import GanttChart from "../components/GanttChart/GanttChart.vue";
 import { COLORS_LIST } from "../common/helper.js";
+import { generateChartDataset } from "../components/GanttChart/helper";
+
 export default {
   name: "PlannerView",
 
@@ -48,28 +48,11 @@ export default {
       return materialsDatasets;
     },
     ganttChartDataset() {
-      const ganttDataset = {
-        myChartStart: this.recipesTimeAndDatePeriod.startTimeAndDate,
-        myChartEnd: this.recipesTimeAndDatePeriod.endTimeAndDate,
-        rows: [],
-      };
-      for (const machine in this.machineToRecipesMap) {
-        const machineToAdd = {
-          label: machine,
-          bars: this.machineToRecipesMap[machine].map((currentRecipe) => ({
-            myStart: currentRecipe.start.replace("T", " "),
-            myEnd: currentRecipe.end.replace("T", " "),
-            label: currentRecipe.recipe,
-            ganttBarConfig: {
-              color: "white",
-              backgroundColor: "#d18aaf",
-              opacity: 0.7,
-            },
-          })),
-        };
-        ganttDataset.rows = [...ganttDataset.rows, machineToAdd];
-      }
-      return ganttDataset;
+      return generateChartDataset(
+        this.recipesTimeAndDatePeriod.startTimeAndDate,
+        this.recipesTimeAndDatePeriod.endTimeAndDate,
+        this.machineToRecipesMap
+      );
     },
   },
 
